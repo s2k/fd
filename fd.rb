@@ -85,7 +85,7 @@ class FileDumper
 				line += "%5s" % @charTable[ chars[ idx ] ]
 				idx += 1
 				if ( idx % @lineLength == 0 ) || idx == chars.size
- 					puts( ( "%#{3*@lineLength}s" % hexvals ) +  " |" + ( "%#{5*@lineLength}s" % line ) )
+					puts( ( "%#{3*@lineLength}s" % hexvals ) +  " |" + ( "%#{5*@lineLength}s" % line ) )
 					hexvals = ""
 					line = ""
 				end
@@ -111,7 +111,7 @@ if __FILE__ == $0
 
 	opts = GetoptLong.new(
 		[ "--width",  "-w", GetoptLong::REQUIRED_ARGUMENT ],
-	 	[ "--help",   "-h", GetoptLong::NO_ARGUMENT ]
+		[ "--help",   "-h", GetoptLong::NO_ARGUMENT ]
 	)
 
 	# A useful number of bytes/characters per output line
