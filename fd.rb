@@ -18,6 +18,8 @@
 #           software is used. Therefore:
 #           In Germany:: The "Bremer Software License" applies
 #           Otherwise:: Ruby's license
+#
+# _fd_ is the abbreviation of "file dump" and that's
 
 # FileDumper does just that: It dumps the content of a file to the standard output.
 class FileDumper
@@ -53,6 +55,7 @@ class FileDumper
 		@charTable[13] = "CR"
 		@charTable[16] = "DEL"
 		@charTable[27] = "ESC"
+		@charTable[32] = "__"
 	end
 
 	# dumps the given file _filename_ to stdout.
