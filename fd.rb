@@ -29,6 +29,8 @@
 # Depending on your operating system, you may have to type a bit more...
 # Usage:: ruby fd.rb [-w _number_] <em>file_name(s)</em>
 
+require 'Getoptlong'
+
 # FileDumper does just that: It dumps the content of a file to the standard output.
 class FileDumper
 
@@ -83,20 +85,51 @@ class FileDumper
 				line += "%5s" % @charTable[ chars[ idx ] ]
 				idx += 1
 				if ( idx % @lineLength == 0 ) || idx == chars.size
- 					puts( ( "%#{3*@lineLength}s" % hexvals ) +  "|" + ( "%#{5*@lineLength}s" % line ) )
+ 					puts( ( "%#{3*@lineLength}s" % hexvals ) +  " |" + ( "%#{5*@lineLength}s" % line ) )
 					hexvals = ""
 					line = ""
 				end
 			end
 		}
 	end
+
+	def usage
+		puts "Usage: #{File.basename( __FILE__ )} file_name_list"
+		puts ""
+		puts "file_name_list: A list of file names"
+		puts ""
+		puts "Options"
+		puts ""
+		puts "--help or -h           : This help text"
+		puts "--width or -w a_number : Sets the number of values per line in the output"
+		puts ""
+	end
+
 end
 
 if __FILE__ == $0
-	raise "Need at least a file name as parameter" if ARGV.size == 0
+
+	opts = GetoptLong.new(
+		[ "--width",  "-w", GetoptLong::REQUIRED_ARGUMENT ],
+	 	[ "--help",   "-h", GetoptLong::NO_ARGUMENT ]
+	)
+
+	# A useful number of bytes/characters per output line
+	# Will be used if no number is given via '-w' option
+	width = 10
+
+	opts.each do |opt, arg|
+		case opt
+			when "--help"
+			when "--width"
+				width = arg.to_i
+		end
+	end
+
+	puts "Remaining args: #{ARGV.join(', ')}"
 
 	ARGV.each { | fn |
 		puts fn
-		FileDumper.new( 10 ).dump( fn )
+		FileDumper.new( width ).dump( fn )
 	}
 end
