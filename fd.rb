@@ -19,13 +19,21 @@
 #           In Germany:: The "Bremer Software License" applies
 #           Otherwise:: Ruby's license
 #
-# _fd_ is the abbreviation of "file dump" and that's
+# _fd_ is the abbreviation of "file dump" and that's what it does. It prints
+# the file content to _STDOUT_. It does so in two collums, the left one will
+# display the hex values of the bytes in the file, the right one will display
+# the characters.
+#
+# Usage:: fd.rb [-w _number_] <em>file_name(s)</em>
+#
+# Depending on your operating system, you may have to type a bit more...
+# Usage:: ruby fd.rb [-w _number_] <em>file_name(s)</em>
 
 # FileDumper does just that: It dumps the content of a file to the standard output.
 class FileDumper
 
 	# _linelength_ sets how many characters are displayed pre line.
-	# Some <i>special non-printable characters</i> are displayed as their names.
+	# Some <i>special non-printable/invisible characters</i> are displayed as their names.
 	#
 	# Name :: Char val
 	# NULL :: 0
@@ -38,7 +46,7 @@ class FileDumper
 	# CR   :: 13
 	# DEL  :: 16
 	# ESC  :: 27
-	#
+	# SPC  :: 32
 	#
 	def initialize( linelength )
 		@lineLength = linelength
