@@ -1,8 +1,23 @@
 # Author:: Stephan Kämper
 # Copyright:: (c) 2004 Stephan Kämper
-#
 # Contact:: Stephan.Kaemper@Schleswig-Holstein.de
-#
+# Licence:: There's are a couple of issues with software licenses,
+#           the most important of which is probably the
+#           liability of the software author in case of a software
+#           failure. Most of the <em>Open Source</em> licenses
+#           reject any liability with words like "provide the software
+#           'as is' without warranty of any kind, either expressed or
+#           implied...".
+#           This complete rejection of liability might (or is) not
+#           possible in Germany. According to the creators "Bremer
+#           Software Licenz" a software author will be liable in case
+#           of a "gross negligence", the liablility in case of a "slight
+#           negligence" can be rejected however.
+#           Therefore the license depends of the law of the country
+#           the software author comes from _and_ the country where the
+#           software is used. Therefore:
+#           In Germany:: The "Bremer Software License" applies
+#           Otherwise:: Ruby's license
 
 # FileDumper does just that: It dumps the content of a file to the standard output.
 class FileDumper
