@@ -52,9 +52,9 @@ class FileDumper
 			line = ""
 			hexvals = ""
 			while idx < chars.size
-				c = chars[idx]
+				c = chars[ idx ]
 				hexvals += " %02x" % c
-				line += "%5s" % @charTable[chars[idx]]
+				line += "%5s" % @charTable[ chars[ idx ] ]
 				idx += 1
 				if ( idx % @lineLength == 0 ) || idx == chars.size
  					puts( ( "%#{3*@lineLength}s" % hexvals ) +  "|" + ( "%#{5*@lineLength}s" % line ) )
@@ -71,6 +71,6 @@ if __FILE__ == $0
 
 	ARGV.each { | fn |
 		puts fn
-		FileDumper.new(10).dump( fn )
+		FileDumper.new( 10 ).dump( fn )
 	}
 end
