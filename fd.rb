@@ -9,6 +9,7 @@ class FileDumper
 
 	# _linelength_ sets how many characters are displayed pre line.
 	# Some <i>special non-printable characters</i> are displayed as their names.
+	#
 	# Name :: Char val
 	# NULL :: 0
 	# BEL  :: 7
