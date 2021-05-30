@@ -1,36 +1,5 @@
 # frozen_string_literal: true
 
-# Author:: Stephan Kämper
-# Copyright:: (c) 2004 Stephan Kämper
-# Contact:: the.tester@seasidetesting.com
-# Licence:: There's are a couple of issues with software licenses,
-#           the most important of which is probably the
-#           liability of the software author in case of a software
-#           failure. Most of the <em>Open Source</em> licenses
-#           reject any liability with words like "provide the software
-#           'as is' without warranty of any kind, either expressed or
-#           implied...".
-#           This complete rejection of liability might (or is) not
-#           possible in Germany. According to the creators "Bremer
-#           Software Lizenz" a software author will be liable in case
-#           of a "gross negligence", the liability in case of a "slight
-#           negligence" can be rejected however.
-#           Therefore the license depends of the law of the country
-#           the software author comes from _and_ the country where the
-#           software is used. Therefore:
-#           In Germany:: The "Bremer Software Lizenz" applies
-#           Otherwise:: Ruby's license
-#
-# _fd_ is the abbreviation of "file dump" and that's what it does. It prints
-# the file content to _STDOUT_. It does so in two columns, the left one will
-# display the hex values of the bytes in the file, the right one will display
-# the characters.
-#
-# Usage:: fd.rb [-w _number_] <em>file_name(s)</em>
-#
-# Depending on your operating system, you may have to type a bit more...
-# Usage:: ruby fd.rb [-w _number_] <em>file_name(s)</em>
-
 require 'getoptlong'
 
 # FileDumper does just that: It dumps the content of a file to the standard output.
