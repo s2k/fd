@@ -1,5 +1,5 @@
-# Author:: Stephan Kämper
-# Copyright:: (c) 2004 Stephan Kämper
+# Author:: Stephan KÃ¤mper
+# Copyright:: (c) 2004 Stephan KÃ¤mper
 # Contact:: Stephan.Kaemper@Schleswig-Holstein.de
 # Licence:: There's are a couple of issues with software licenses,
 #           the most important of which is probably the
