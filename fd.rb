@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Author:: Stephan Kämper
 # Copyright:: (c) 2004 Stephan Kämper
 # Contact:: the.tester@seasidetesting.com
