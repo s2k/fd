@@ -69,31 +69,30 @@ class FileDumper
     @char_table[32] = '__'
   end
 
-	# dumps the given file _filename_ to stdout.
-	def dump( fileName )
-		chars = Array.new
-		File.open( fileName ) { | fn |
-			fn.binmode
-			fn.each_byte { | b |
-				chars << b
-			}
-			idx = 0
-			line = ""
-			hexvals = ""
-			while idx < chars.size
-				c = chars[ idx ]
-				hexvals += " %02x" % c
-				line += "%5s" % @charTable[ chars[ idx ] ]
-				idx += 1
-				if ( idx % @lineLength == 0 ) || idx == chars.size
-					puts( ( "%#{3*@lineLength}s" % hexvals ) +  " |" + ( "%#{5*@lineLength}s" % line ) )
-					hexvals = ""
-					line = ""
-				end
-			end
-		}
-	end
+  # dumps the given file _filename_ to stdout.
+  def dump(file_name)
+    chars = []
+    File.open(file_name) do |fn|
+      fn.binmode
+      fn.each_byte do |b|
+        chars << b
+      end
+      idx = 0
+      line = ''
+      hexvals = ''
+      while idx < chars.size
+        c = chars[idx]
+        hexvals += ' %02x' % c
+        line += '%5s' % @char_table[chars[idx]]
+        idx += 1
+        next unless (idx % @line_length).zero? || idx == chars.size
 
+        puts("#{"%#{3 * @line_length}s" % hexvals} |#{"%#{5 * @line_length}s" % line}")
+        hexvals = ''
+        line = ''
+      end
+    end
+  end
 
   def usage
     puts "Usage: #{File.basename(__FILE__)} file_name_list"
