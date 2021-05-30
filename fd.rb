@@ -36,38 +36,38 @@ require 'getoptlong'
 # FileDumper does just that: It dumps the content of a file to the standard output.
 class FileDumper
   # _line_length_ sets how many characters are displayed pre line.
-	# Some <i>special non-printable/invisible characters</i> are displayed as their names.
-	#
-	# Name :: Char val
-	# NULL :: 0
-	# BEL  :: 7
-	# BS   :: 8
-	# TAB  :: 9
-	# LF   :: 10
-	# VT   :: 11
-	# FF   :: 12
-	# CR   :: 13
-	# DEL  :: 16
-	# ESC  :: 27
-	# SPC  :: 32
-	#
-	def initialize( linelength )
-		@lineLength = linelength
-		@charTable = Array.new
-		(0..31).each{ |i| @charTable[i] = "#{'%02d' % i}" }
-		(32..255).each{ |i| @charTable[i] = i.chr }
-		@charTable[ 0] = "NULL"
-		@charTable[ 7] = "BEL"
-		@charTable[ 8] = "BS"
-		@charTable[ 9] = "TAB"
-		@charTable[10] = "LF"
-		@charTable[11] = "VT"
-		@charTable[12] = "FF"
-		@charTable[13] = "CR"
-		@charTable[16] = "DEL"
-		@charTable[27] = "ESC"
-		@charTable[32] = "__"
-	end
+  # Some <i>special non-printable/invisible characters</i> are displayed as their names.
+  #
+  # Name :: Char val
+  # NULL :: 0
+  # BEL  :: 7
+  # BS   :: 8
+  # TAB  :: 9
+  # LF   :: 10
+  # VT   :: 11
+  # FF   :: 12
+  # CR   :: 13
+  # DEL  :: 16
+  # ESC  :: 27
+  # SPC  :: 32
+  #
+  def initialize(line_length)
+    @line_length = line_length
+    @char_table = []
+    (0..31).each { |i| @char_table[i] = ('%02d' % i).to_s }
+    (32..255).each { |i| @char_table[i] = i.chr }
+    @char_table[0]  = 'NULL'
+    @char_table[7]  = 'BEL'
+    @char_table[8]  = 'BS'
+    @char_table[9]  = 'TAB'
+    @char_table[10] = 'LF'
+    @char_table[11] = 'VT'
+    @char_table[12] = 'FF'
+    @char_table[13] = 'CR'
+    @char_table[16] = 'DEL'
+    @char_table[27] = 'ESC'
+    @char_table[32] = '__'
+  end
 
 	# dumps the given file _filename_ to stdout.
 	def dump( fileName )
