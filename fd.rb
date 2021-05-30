@@ -31,7 +31,7 @@
 # Depending on your operating system, you may have to type a bit more...
 # Usage:: ruby fd.rb [-w _number_] <em>file_name(s)</em>
 
-require 'Getoptlong'
+require 'getoptlong'
 
 # FileDumper does just that: It dumps the content of a file to the standard output.
 class FileDumper
