@@ -94,43 +94,42 @@ class FileDumper
 		}
 	end
 
-	def usage
-		puts "Usage: #{File.basename( __FILE__ )} file_name_list"
-		puts ""
-		puts "file_name_list: A list of file names"
-		puts ""
-		puts "Options"
-		puts ""
-		puts "--help or -h           : This help text"
-		puts "--width or -w a_number : Sets the number of values per line in the output"
-		puts ""
-	end
 
+  def usage
+    puts "Usage: #{File.basename(__FILE__)} file_name_list"
+    puts
+    puts 'file_name_list: A list of file names'
+    puts
+    puts 'Options'
+    puts
+    puts '--help or -h           : This help text'
+    puts '--width or -w a_number : Sets the number of values per line in the output'
+  end
 end
 
-if __FILE__ == $0
+if __FILE__ == $PROGRAM_NAME
 
-	opts = GetoptLong.new(
-		[ "--width",  "-w", GetoptLong::REQUIRED_ARGUMENT ],
-		[ "--help",   "-h", GetoptLong::NO_ARGUMENT ]
-	)
+  opts = GetoptLong.new(
+    ['--width', '-w', GetoptLong::REQUIRED_ARGUMENT],
+    ['--help', '-h', GetoptLong::NO_ARGUMENT]
+  )
 
-	# A useful number of bytes/characters per output line
-	# Will be used if no number is given via '-w' option
-	width = 10
+  # A useful number of bytes/characters per output line
+  # Will be used if no number is given via '-w' option
+  width = 10
 
-	opts.each do |opt, arg|
-		case opt
-			when "--help"
-			when "--width"
-				width = arg.to_i
-		end
-	end
+  opts.each do |opt, arg|
+    case opt
+    when '--help'
+    when '--width'
+      width = arg.to_i
+    end
+  end
 
-	puts "Remaining args: #{ARGV.join(', ')}"
+  puts "Remaining args: #{ARGV.join(', ')}"
 
-	ARGV.each { | fn |
-		puts fn
-		FileDumper.new( width ).dump( fn )
-	}
+  ARGV.each do |fn|
+    puts fn
+    FileDumper.new(width).dump(fn)
+  end
 end
