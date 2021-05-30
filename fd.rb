@@ -10,17 +10,17 @@
 #           implied...".
 #           This complete rejection of liability might (or is) not
 #           possible in Germany. According to the creators "Bremer
-#           Software Licenz" a software author will be liable in case
-#           of a "gross negligence", the liablility in case of a "slight
+#           Software Lizenz" a software author will be liable in case
+#           of a "gross negligence", the liability in case of a "slight
 #           negligence" can be rejected however.
 #           Therefore the license depends of the law of the country
 #           the software author comes from _and_ the country where the
 #           software is used. Therefore:
-#           In Germany:: The "Bremer Software License" applies
+#           In Germany:: The "Bremer Software Lizenz" applies
 #           Otherwise:: Ruby's license
 #
 # _fd_ is the abbreviation of "file dump" and that's what it does. It prints
-# the file content to _STDOUT_. It does so in two collums, the left one will
+# the file content to _STDOUT_. It does so in two columns, the left one will
 # display the hex values of the bytes in the file, the right one will display
 # the characters.
 #
