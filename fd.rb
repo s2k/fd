@@ -1,6 +1,6 @@
 # Author:: Stephan Kämper
 # Copyright:: (c) 2004 Stephan Kämper
-# Contact:: Stephan.Kaemper@Schleswig-Holstein.de
+# Contact:: the.tester@seasidetesting.com
 # Licence:: There's are a couple of issues with software licenses,
 #           the most important of which is probably the
 #           liability of the software author in case of a software
