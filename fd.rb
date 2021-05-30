@@ -35,8 +35,7 @@ require 'getoptlong'
 
 # FileDumper does just that: It dumps the content of a file to the standard output.
 class FileDumper
-
-	# _linelength_ sets how many characters are displayed pre line.
+  # _line_length_ sets how many characters are displayed pre line.
 	# Some <i>special non-printable/invisible characters</i> are displayed as their names.
 	#
 	# Name :: Char val
