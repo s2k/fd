@@ -1,13 +1,13 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require "fd"
 
-# frozen_string_literal: true
 
 require 'getoptlong'
 
-# FileDumper does just that: It dumps the content of a file to the standard output.
-class FileDumper
+# Fd does just that: It dumps the content of a file to the standard output.
+class Fd
   # _line_length_ sets how many characters are displayed pre line.
   # Some <i>special non-printable/invisible characters</i> are displayed as their names.
   #
@@ -102,6 +102,6 @@ if __FILE__ == $PROGRAM_NAME
 
   ARGV.each do |fn|
     puts fn
-    FileDumper.new(width).dump(fn)
+    Fd.new(width).dump(fn)
   end
 end
