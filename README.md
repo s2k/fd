@@ -1,5 +1,7 @@
 # fd - A simple file dumping tool
 
+https://github.com/s2k/fd/actions/workflows/workflows/main.yml/badge.svg
+
 Note: It may be _too_ simple for the changed world of unicode
 
 _fd_ reads the file _as a sequence of bytes_ and prints the file content to _STDOUT_. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
