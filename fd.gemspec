@@ -8,17 +8,17 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Stephan Kämper']
   spec.email         = ['the.tester@seasidetesting.com']
 
-  spec.summary       = 'TODO: Write a short summary, because RubyGems requires one.'
-  spec.description   = 'TODO: Write a longer description or delete this line.'
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = 'fd is a simple (currently simplistic) tool to dump file contents in binary & text format - side by side'
+  spec.description   = 'fd prints the given file in two columns: Hex values in the left column and the textual representations in the right column.'
+  spec.homepage      = 'https://github.com/s2k/fd'
   spec.license       = 'MIT'
   spec.required_ruby_version = '>= 2.4.0'
 
-  spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+  spec.metadata['allowed_push_host'] = 'http://rubygems.org'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = "TODO: Put your gem's public repo URL here."
-  spec.metadata['changelog_uri'] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata['source_code_uri'] = 'https://github.com/s2k/fd'
+  #spec.metadata['changelog_uri'] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
