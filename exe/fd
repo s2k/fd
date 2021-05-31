@@ -6,10 +6,6 @@ require "fd"
 
 require 'getoptlong'
 
-# Fd does just that: It dumps the content of a file to the standard output.
-class Fd
-end
-
 if __FILE__ == $PROGRAM_NAME
 
   opts = GetoptLong.new(
