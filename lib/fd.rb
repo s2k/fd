@@ -4,7 +4,7 @@ require_relative 'fd/version'
 
 # Fd dumps the content of a file to the standard output.
 #
-module Fd
+class Fd
   class Error < StandardError; end
 
   # _line_length_ sets how many characters are displayed pre line.
