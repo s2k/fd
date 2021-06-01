@@ -12,13 +12,13 @@ Gem::Specification.new do |spec|
   spec.description   = 'fd prints the given file in two columns: Hex values in the left column and the textual representations in the right column.'
   spec.homepage      = 'https://github.com/s2k/fd'
   spec.license       = 'MIT'
-  spec.required_ruby_version = '>= 2.4.0'
+  spec.required_ruby_version = '>= 2.7.3'
 
-  spec.metadata['allowed_push_host'] = 'http://rubygems.org'
+  spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/s2k/fd'
-  #spec.metadata['changelog_uri'] = "TODO: Put your gem's CHANGELOG.md URL here."
+  # spec.metadata['changelog_uri'] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
