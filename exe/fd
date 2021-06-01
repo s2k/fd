@@ -24,8 +24,6 @@ if __FILE__ == $PROGRAM_NAME
     end
   end
 
-  puts "Remaining args: #{ARGV.join(', ')}"
-
   ARGV.each do |fn|
     puts fn
     Fd.new(width).dump(fn)
