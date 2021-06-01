@@ -19,6 +19,7 @@ if __FILE__ == $PROGRAM_NAME
   opts.each do |opt, arg|
     case opt
     when '--help'
+      Fd.print_help
     when '--width'
       width = arg.to_i
     end

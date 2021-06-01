@@ -66,10 +66,10 @@ module Fd
     end
   end
 
-  def usage
+  def self.print_help
     puts "Usage: #{File.basename(__FILE__)} file_name_list"
     puts
-    puts 'file_name_list: A list of file names'
+    puts 'file_name_list: one or more file names'
     puts
     puts 'Options'
     puts
