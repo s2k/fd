@@ -51,16 +51,16 @@ class Fd
       end
       idx = 0
       line = ''
-      hexvals = ''
+      hexvals = []
       while idx < chars.size
         c = chars[idx]
-        hexvals += ' %02x' % c
+        hexvals << '%02x' % c
         line += '%5s' % @char_table[chars[idx]]
         idx += 1
         next unless (idx % @line_length).zero? || idx == chars.size
 
-        puts("#{"%#{3 * @line_length}s" % hexvals} |#{"%#{5 * @line_length}s" % line}")
-        hexvals = ''
+        puts("#{"%#{3 * @line_length - 1}s" % (hexvals.join(' '))} |#{"%#{5 * @line_length}s" % line}")
+        hexvals.clear
         line = ''
       end
     end
