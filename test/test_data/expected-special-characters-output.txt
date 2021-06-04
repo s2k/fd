@@ -1,0 +1,2 @@
+test/test_data/special-characters.txt
+ 00 07 08 09 0a 0b 0c 0d 10 1b 20 0a | NULL  BEL   BS  TAB   LF   VT   FF   CR  DEL  ESC   __   LF
