@@ -21,7 +21,7 @@ class Fd
   # CR   :: 13
   # DEL  :: 16
   # ESC  :: 27
-  # SPC  :: 32
+  # __   :: 32
   #
   def initialize(line_length)
     @line_length = line_length
