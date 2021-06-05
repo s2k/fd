@@ -20,6 +20,7 @@ if __FILE__ == $PROGRAM_NAME
     case opt
     when '--help'
       Fd.print_help
+      exit 0
     when '--width'
       width = arg.to_i
     end

@@ -16,4 +16,19 @@ class FdTest < Minitest::Test
     res = `bundle exec exe/fd -w 12 test/test_data/special-characters.txt`
     assert_equal File.read('test/test_data/expected-special-characters-output.txt'), res
   end
+
+  def test_help_only_prints_help
+    expected = <<-END
+Usage: fd.rb file_name_list
+
+file_name_list: one or more file names
+
+Options
+
+--help or -h           : This help text
+--width or -w a_number : Sets the number of values per line in the output
+    END
+    res = `bundle exec exe/fd -h no-such-file`
+    assert_equal expected, res
+  end
 end

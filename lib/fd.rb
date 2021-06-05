@@ -5,6 +5,18 @@ require_relative 'fd/version'
 # Fd dumps the content of a file to the standard output.
 #
 class Fd
+
+  HELP_TEXT = <<-END_OF_HELP_TEXT
+Usage: fd.rb file_name_list
+
+file_name_list: one or more file names
+
+Options
+
+--help or -h           : This help text
+--width or -w a_number : Sets the number of values per line in the output
+  END_OF_HELP_TEXT
+
   class Error < StandardError; end
 
   # _line_length_ sets how many characters are displayed pre line.
@@ -67,13 +79,6 @@ class Fd
   end
 
   def self.print_help
-    puts "Usage: #{File.basename(__FILE__)} file_name_list"
-    puts
-    puts 'file_name_list: one or more file names'
-    puts
-    puts 'Options'
-    puts
-    puts '--help or -h           : This help text'
-    puts '--width or -w a_number : Sets the number of values per line in the output'
+    puts HELP_TEXT
   end
 end
