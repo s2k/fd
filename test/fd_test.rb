@@ -4,14 +4,14 @@ require 'test_helper'
 
 class FdTest < Minitest::Test
   EXPECTED_HELP_TEXT = <<~END
-  Usage: fd.rb file_name_list
-  
-  file_name_list: one or more file names
-  
-  Options
-  
-  --help or -h           : This help text
-  --width or -w a_number : Sets the number of values per line in the output
+    Usage: fd.rb file_name_list
+
+    file_name_list: one or more file names
+
+    Options
+
+    --help or -h           : This help text
+    --width or -w a_number : Sets the number of values per line in the output
   END
 
   def test_has_version_number
@@ -43,5 +43,4 @@ class FdTest < Minitest::Test
     exp = "fd doesn't work, this way:\nLine width must be a positive integer, was given '0'\n\n" + EXPECTED_HELP_TEXT
     assert_equal exp, res
   end
-
 end
