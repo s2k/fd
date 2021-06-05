@@ -3,6 +3,18 @@
 require 'test_helper'
 
 class FdTest < Minitest::Test
+
+  EXPECTED_HELP_TEXT = <<-END
+Usage: fd.rb file_name_list
+
+file_name_list: one or more file names
+
+Options
+
+--help or -h           : This help text
+--width or -w a_number : Sets the number of values per line in the output
+  END
+
   def test_has_version_number
     assert_match %r{\A(\d+\.)+\d+\Z}, ::Fd::VERSION
   end
@@ -18,17 +30,19 @@ class FdTest < Minitest::Test
   end
 
   def test_help_only_prints_help
-    expected = <<-END
-Usage: fd.rb file_name_list
-
-file_name_list: one or more file names
-
-Options
-
---help or -h           : This help text
---width or -w a_number : Sets the number of values per line in the output
-    END
     res = `bundle exec exe/fd -h no-such-file`
-    assert_equal expected, res
+    assert_equal EXPECTED_HELP_TEXT, res
   end
+
+  def test_width_requires_one_parameter
+    res = `bundle exec exe/fd -w 10 test/test_data/word-list-ascii-ipsum.txt`
+    assert_equal File.read('test/test_data/expected-word-list-ascii-ipsum-output.txt'), res
+  end
+
+  def test_non_integer_width_parameter_causes_help_to_be_displayed
+    res = `bundle exec exe/fd -w f10x test/test_data/word-list-ascii-ipsum.txt`
+    exp = "fd doesn't work, this way:\nLine width must be a positive integer, was given '0'\n\n" + EXPECTED_HELP_TEXT
+    assert_equal exp, res
+  end
+
 end

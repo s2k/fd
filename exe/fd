@@ -27,7 +27,12 @@ if __FILE__ == $PROGRAM_NAME
   end
 
   ARGV.each do |fn|
-    puts fn
-    Fd.new(width).dump(fn)
+    begin
+      Fd.new(width).dump(fn)
+    rescue ArgumentError => err
+      puts "fd doesn't work, this way:"
+      puts err.message, ''
+      Fd.print_help
+    end
   end
 end

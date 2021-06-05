@@ -36,6 +36,7 @@ Options
   # __   :: 32
   #
   def initialize(line_length)
+    raise ArgumentError, "Line width must be a positive integer, was given '#{line_length}'" unless line_length.is_a?(Integer) && line_length > 0
     @line_length = line_length
     @char_table = []
     (0..31).each { |i| @char_table[i] = ('%02d' % i).to_s }
@@ -55,6 +56,7 @@ Options
 
   # dumps the given file _filename_ to stdout.
   def dump(file_name)
+    puts file_name
     chars = []
     File.open(file_name) do |fn|
       fn.binmode
