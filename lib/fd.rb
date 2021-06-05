@@ -5,16 +5,15 @@ require_relative 'fd/version'
 # Fd dumps the content of a file to the standard output.
 #
 class Fd
-
-  HELP_TEXT = <<-END_OF_HELP_TEXT
-Usage: fd.rb file_name_list
-
-file_name_list: one or more file names
-
-Options
-
---help or -h           : This help text
---width or -w a_number : Sets the number of values per line in the output
+  HELP_TEXT = <<~END_OF_HELP_TEXT
+  Usage: fd.rb file_name_list
+  
+  file_name_list: one or more file names
+  
+  Options
+  
+  --help or -h           : This help text
+  --width or -w a_number : Sets the number of values per line in the output
   END_OF_HELP_TEXT
 
   class Error < StandardError; end
