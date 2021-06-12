@@ -43,4 +43,9 @@ class FdTest < Minitest::Test
     exp = "fd doesn't work, this way:\nLine width must be a positive integer, was given '0'\n\n" + EXPECTED_HELP_TEXT
     assert_equal exp, res
   end
+
+  def test_display_very_short_utf_8_text
+    res = `bundle exec exe/fd test/test_data/short-utf-8-text.txt`
+    assert_equal File.read('test/test_data/expected-output-short-utf-8-text.txt'), res
+  end
 end
