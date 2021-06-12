@@ -6,17 +6,19 @@ require_relative 'fd/version'
 #
 class Fd
   HELP_TEXT = <<~END_OF_HELP_TEXT
-  Usage: fd.rb file_name_list
-  
-  file_name_list: one or more file names
-  
-  Options
-  
-  --help or -h           : This help text
-  --width or -w a_number : Sets the number of values per line in the output
+    Usage: fd.rb file_name_list
+
+    file_name_list: one or more file names
+
+    Options
+
+    --help or -h           : This help text
+    --width or -w a_number : Sets the number of values per line in the output
   END_OF_HELP_TEXT
 
   class Error < StandardError; end
+
+  attr_reader :line_length, :char_table
 
   # _line_length_ sets how many characters are displayed pre line.
   # Some <i>special non-printable/invisible characters</i> are displayed as their names.
@@ -38,8 +40,6 @@ class Fd
     raise ArgumentError, "Line width must be a positive integer, was given '#{line_length}'" unless line_length.is_a?(Integer) && line_length > 0
     @line_length = line_length
     @char_table = []
-    (0..31).each { |i| @char_table[i] = ('%02d' % i).to_s }
-    (32..255).each { |i| @char_table[i] = i.chr }
     @char_table[0]  = 'NULL'
     @char_table[7]  = 'BEL'
     @char_table[8]  = 'BS'
@@ -56,30 +56,45 @@ class Fd
   # dumps the given file _filename_ to stdout.
   def dump(file_name)
     puts file_name
-    chars = []
-    File.open(file_name) do |fn|
-      fn.binmode
-      fn.each_byte do |b|
-        chars << b
-      end
-      idx = 0
-      line = ''
-      hexvals = []
-      while idx < chars.size
-        c = chars[idx]
-        hexvals << '%02x' % c
-        line += '%5s' % @char_table[chars[idx]]
-        idx += 1
-        next unless (idx % @line_length).zero? || idx == chars.size
-
-        puts("#{"%#{3 * @line_length - 1}s" % (hexvals.join(' '))} |#{"%#{5 * @line_length}s" % line}")
-        hexvals.clear
+    content = File.read(file_name)
+    raise "Not the expected encoding of UFT-8, got #{content.encoding}" unless content.encoding == Encoding::UTF_8
+    chars = content.chars
+    byte_count_in_line = 0
+    line = ''
+    hex_values = []
+    char_index = 0
+    while char_index < chars.size
+      char = chars[char_index]
+      bytes = char.bytes
+      if enough_space_in_line?(byte_count_in_line, bytes)
+        # Next char fits in line => Add hex values & character to line
+        byte_count_in_line += bytes.size
+        bytes.each { |bt| hex_values << '%02x' % bt }
+        line += '%5s' % (char_table[char.ord] || char)
+        char_index += 1
+      else
+        # Print a new line…
+        print_single_line(hex_values, line)
+        # …and reset line internal values
+        byte_count_in_line = 0
+        hex_values.clear
         line = ''
       end
     end
+    print_single_line(hex_values, line) unless line.empty?
   end
 
   def self.print_help
     puts HELP_TEXT
+  end
+
+  private
+
+  def enough_space_in_line?(byte_count_in_line, bytes)
+    byte_count_in_line + bytes.size <= line_length
+  end
+
+  def print_single_line(hex_values, line)
+    puts("#{"%#{3 * line_length - 1}s" % (hex_values.join(' '))} |#{"%#{5 * line_length}s" % line}")
   end
 end
