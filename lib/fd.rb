@@ -39,7 +39,7 @@ class Fd
   def initialize(line_length)
     raise ArgumentError, "Line width must be a positive integer, was given '#{line_length}'" unless line_length.is_a?(Integer) && line_length > 0
     @line_length = line_length
-    @char_table = []
+    @char_table = {}
     @char_table[0]  = 'NULL'
     @char_table[7]  = 'BEL'
     @char_table[8]  = 'BS'
