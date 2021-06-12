@@ -20,7 +20,7 @@ class Fd
 
   attr_reader :line_length, :char_table
 
-  # _line_length_ sets how many characters are displayed pre line.
+  # _line_length_ sets how many characters are displayed per line.
   # Some <i>special non-printable/invisible characters</i> are displayed as their names.
   #
   # Name :: Char val
