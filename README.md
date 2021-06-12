@@ -1,6 +1,6 @@
 # fd - A simple file dumping tool
 
-![Main workflow: unit tests](https://github.com/s2k/fd/actions/workflows/main.yml/badge.svg)
+[![Main workflow: unit tests](https://github.com/s2k/fd/actions/workflows/main.yml/badge.svg)](https://github.com/s2k/fd/actions)
 
 Note: It may be _too_ simple for the changed world of unicode
 
