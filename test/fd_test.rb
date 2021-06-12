@@ -20,7 +20,7 @@ class FdTest < Minitest::Test
 
   def test_works_with_ascii_input
     res = `bundle exec exe/fd test/test_data/word-list-ascii-ipsum.txt`
-    assert_equal File.read('test/test_data/expected-word-list-ascii-ipsum-output.txt'), res
+    assert_equal File.read('test/test_data/expected-output-word-list-ascii-ipsum.txt'), res
   end
 
   def test_transcribes_invisible_characters_with_given_width
@@ -35,7 +35,7 @@ class FdTest < Minitest::Test
 
   def test_width_requires_one_parameter
     res = `bundle exec exe/fd -w 10 test/test_data/word-list-ascii-ipsum.txt`
-    assert_equal File.read('test/test_data/expected-word-list-ascii-ipsum-output.txt'), res
+    assert_equal File.read('test/test_data/expected-output-word-list-ascii-ipsum.txt'), res
   end
 
   def test_non_integer_width_parameter_causes_help_to_be_displayed
