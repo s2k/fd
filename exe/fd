@@ -2,33 +2,40 @@
 # frozen_string_literal: true
 
 require 'fd'
-require 'getoptlong'
+require 'optparse'
+require 'ostruct'
 
 if __FILE__ == $PROGRAM_NAME
-  opts = GetoptLong.new(
-    ['--width', '-w', GetoptLong::REQUIRED_ARGUMENT],
-    ['--help', '-h', GetoptLong::NO_ARGUMENT]
-  )
 
-  # A useful number of bytes/characters per output line
-  # Will be used if no number is given via '-w' option
-  width = 10
+  arguments = OpenStruct.new
+  arguments.width = 10
 
-  opts.each do |opt, arg|
-    case opt
-    when '--help'
-      Fd.print_help
-      exit 0
-    when '--width'
-      width = arg.to_i
+  options = OptionParser.new do |opts|
+    opts.banner = "Usage: #{File.basename __FILE__} [options] file_names"
+
+    opts.on("-w", "--width=WIDTH [Integer]", Integer, "Display upto _width_ bytes per row, optional, default is 10") do |width|
+      arguments.width = width
     end
+
+    opts.on("-h", "--help", "Display using this help") do
+      puts opts
+      exit
+    end
+
   end
+
+  begin
+    options.parse!
+  rescue OptionParser::InvalidArgument => e
+    puts "fd doesn't work, this way:"
+    options.parse %w[--help]
+    exit 1
+  end
+
+  file_dumper = Fd.new(arguments.width)
 
   ARGV.each do |fn|
-    Fd.new(width).dump(fn)
-  rescue ArgumentError => e
-    puts "fd doesn't work, this way:"
-    puts e.message, ''
-    Fd.print_help
+    file_dumper.dump(fn)
   end
+
 end
