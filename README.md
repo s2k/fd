@@ -1,16 +1,22 @@
 # fd - A simple file dumping tool
 
-[![Main workflow: unit tests](https://github.com/s2k/fd/actions/workflows/main.yml/badge.svg)](https://github.com/s2k/fd/actions)
+## GitHub Actions
 
-Note: It may be _too_ simple for the changed world of unicode
+<dl>
+    <dt>MiniTest</dt>
+    <dd>[![Main workflow: unit tests](https://github.com/s2k/fd/actions/workflows/main.yml/badge.svg)](https://github.com/s2k/fd/actions)</dd>
 
-_fd_ reads the file _as a sequence of bytes_ and prints the file content to _STDOUT_. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
+    <dt>CodeQL</dt>
+    <dd>[![CodeQL for 'fd'](https://github.com/s2k/fd/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/s2k/fd/actions/workflows/codeql-analysis.yml)</dd>
+</dl>
 
-This means, that – in the current version – it cannot and will not cope well with multibyte unicode characters.
+`fd` reads the file _as a sequence of bytes_ and dumps the file content to _STDOUT_, thus the name `fd`. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
 
 ## Warning
 
-This is, except for some updates to fix typos, change the license, and update the coding style the version as I created it back in 2004. It was programmed in a different world: On another operating system, using another file system (which most notably didn't have the concept of case-sensitive file names). This version originally used ISO-8859-1 as the default encoding, while it's now UTF-8. But since it reads the file byte wise, some characters will not be displayed as you would see them in a modern text editor.
+This is, essentially, the same version I created **back in 2004**. It was programmed in a different world: On another operating system, using another file system (which most notably didn't have the concept of case-sensitive file names). This version originally used ISO-8859-1 as the default encoding, while it's now UTF-8. But since it reads the file byte wise, some characters will not be displayed as you would see them in a modern text editor.
+
+In other words: It's a work in progress.
 
 ## Installation
 
