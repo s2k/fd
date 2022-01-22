@@ -40,7 +40,7 @@ fd.rb [-w _number_] <em>file_name(s)</em>
 Depending on your operating system, you may have to type a bit more...
 
 ```
-ruby fd.rb [-w _number_] <em>file_name(s)</em>
+ruby fd.rb [-w _number_] file_name(s)
 ```
 
 ## Development
