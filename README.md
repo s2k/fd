@@ -2,9 +2,9 @@
 
 ## GitHub Actions
 
-* [![Main workflow: unit tests](https://github.com/s2k/fd/actions/workflows/main.yml/badge.svg)](https://github.com/s2k/fd/actions)</dd>
-* [![CodeQL for 'fd'](https://github.com/s2k/fd/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/s2k/fd/actions/workflows/codeql-analysis.yml)</dd>
+[![Main workflow: unit tests](https://github.com/s2k/fd/actions/workflows/main.yml/badge.svg)](https://github.com/s2k/fd/actions) —  [![CodeQL for 'fd'](https://github.com/s2k/fd/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/s2k/fd/actions/workflows/codeql-analysis.yml)
 
+## TL;DR
 
 `fd` reads the file _as a sequence of bytes_ and dumps the file content to _STDOUT_, thus the name `fd`. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
 
