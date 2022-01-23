@@ -5,6 +5,17 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in fd.gemspec
 gemspec
 
-gem 'rake', '~> 13.0'
+ruby '3.1.0'
 
-gem 'minitest', '~> 5.0'
+group :development, :test do
+  gem 'guard-bundler'
+  gem 'guard-minitest'
+  gem 'minitest'
+  gem 'pry'
+  gem 'pry-doc'
+  gem 'rake'
+  gem 'rb-fsevent'
+  gem 'rspec'
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard'
+end
