@@ -50,13 +50,9 @@ class Fd
     content = File.read(file_name)
     raise "Not the expected encoding of UFT-8, got #{content.encoding}" unless content.encoding == Encoding::UTF_8
 
-    chars = content.chars
-    @byte_count_in_line = 0
-    @line = ''
-    @hex_values = []
-    @char_index = 0
-    while @char_index < chars.size
-      char = chars[@char_index]
+    initialize_fields(content)
+    while @char_index < @chars.size
+      char = @chars[@char_index]
       bytes = char.bytes
       if enough_space_in_line?(@byte_count_in_line, bytes)
         append_to_line(bytes, char)
@@ -69,6 +65,14 @@ class Fd
   end
 
   private
+
+  def initialize_fields(content)
+    @chars              = content.chars
+    @byte_count_in_line = 0
+    @line               = ''
+    @hex_values         = []
+    @char_index         = 0
+  end
 
   attr_reader :hex_values, :line
 
