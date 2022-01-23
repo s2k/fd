@@ -31,7 +31,7 @@ class FdCommandLineTest < Minitest::Test
 
   def test_print_version
     res = `bundle exec bin/fd -v`
-    assert_match /\Afd version: (\d+\.)+\d+\Z/, res
+    assert_match(/\Afd version: (\d+\.)+\d+\Z/, res)
   end
 
   def test_width_requires_one_parameter
