@@ -9,7 +9,7 @@ class Fd
 
   attr_reader :line_length, :char_table
 
-  # _line_length_ sets how many characters are displayed per line.
+  # _line_length_ sets how many characters are displayed per @line.
   # Some <i>special non-printable/invisible characters</i> are displayed as their names.
   #
   # Name :: Char val
@@ -51,32 +51,40 @@ class Fd
     raise "Not the expected encoding of UFT-8, got #{content.encoding}" unless content.encoding == Encoding::UTF_8
 
     chars = content.chars
-    byte_count_in_line = 0
-    line = ''
-    hex_values = []
-    char_index = 0
-    while char_index < chars.size
-      char = chars[char_index]
+    @byte_count_in_line = 0
+    @line = ''
+    @hex_values = []
+    @char_index = 0
+    while @char_index < chars.size
+      char = chars[@char_index]
       bytes = char.bytes
-      if enough_space_in_line?(byte_count_in_line, bytes)
-        # Next char fits in line => Add hex values & character to line
-        byte_count_in_line += bytes.size
-        bytes.each { |bt| hex_values << format('%02x', bt) }
-        line += format('%5s', (char_table[char.ord] || char))
-        char_index += 1
+      if enough_space_in_line?(@byte_count_in_line, bytes)
+        # Next char fits in @line => Add hex values & character to @line
+        append_to_line(bytes, char)
       else
-        # Print a new line…
-        print_single_line(hex_values, line)
-        # …and reset line internal values
-        byte_count_in_line = 0
-        hex_values.clear
-        line = ''
+        # Print a new @line…
+        print_single_line(@hex_values, @line)
+        # …and reset @line internal values
+        reset_line
       end
     end
-    print_single_line(hex_values, line) unless line.empty?
+    print_single_line(@hex_values, @line) unless @line.empty?
   end
 
   private
+
+  def reset_line
+    @byte_count_in_line = 0
+    @hex_values.clear
+    @line = ''
+  end
+
+  def append_to_line(bytes, char)
+    @byte_count_in_line += bytes.size
+    bytes.each { |bt| @hex_values << format('%02x', bt) }
+    @line       += format('%5s', (char_table[char.ord] || char))
+    @char_index += 1
+  end
 
   def enough_space_in_line?(byte_count_in_line, bytes)
     byte_count_in_line + bytes.size <= line_length
