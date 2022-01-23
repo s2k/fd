@@ -26,7 +26,9 @@ class Fd
   # __   :: 32
   #
   def initialize(line_length)
-    raise ArgumentError, "Line width must be a positive integer, was given '#{line_length}'" unless line_length.is_a?(Integer) && line_length > 0
+    raise ArgumentError,
+          "Line width must be a positive integer, was given '#{line_length}'" unless line_length.is_a?(Integer) && line_length.positive?
+
     @line_length = line_length
     @char_table = {}
     @char_table[0]  = 'NULL'
@@ -42,11 +44,12 @@ class Fd
     @char_table[32] = '__'
   end
 
-  # dumps the given file _filename_ to stdout.
+  # dumps the given file _file_name_ to stdout.
   def dump(file_name)
     puts file_name
     content = File.read(file_name)
     raise "Not the expected encoding of UFT-8, got #{content.encoding}" unless content.encoding == Encoding::UTF_8
+
     chars = content.chars
     byte_count_in_line = 0
     line = ''
@@ -58,8 +61,8 @@ class Fd
       if enough_space_in_line?(byte_count_in_line, bytes)
         # Next char fits in line => Add hex values & character to line
         byte_count_in_line += bytes.size
-        bytes.each { |bt| hex_values << '%02x' % bt }
-        line += '%5s' % (char_table[char.ord] || char)
+        bytes.each { |bt| hex_values << format('%02x', bt) }
+        line += format('%5s', (char_table[char.ord] || char))
         char_index += 1
       else
         # Print a new line…
@@ -80,6 +83,6 @@ class Fd
   end
 
   def print_single_line(hex_values, line)
-    puts("#{"%#{3 * line_length - 1}s" % (hex_values.join(' '))} |#{"%#{5 * line_length}s" % line}")
+    puts("#{format("%#{(3 * line_length) - 1}s", hex_values.join(' '))} |#{format("%#{5 * line_length}s", line)}")
   end
 end

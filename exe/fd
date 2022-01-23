@@ -13,20 +13,19 @@ if __FILE__ == $PROGRAM_NAME
   options = OptionParser.new do |opts|
     opts.banner = "Usage: #{File.basename __FILE__} [options] file_names"
 
-    opts.on("-w", "--width=WIDTH [Integer]", Integer, "Display upto _width_ bytes per row, optional, default is 10") do |width|
+    opts.on('-w', '--width=WIDTH [Integer]', Integer, 'Display upto _width_ bytes per row, optional, default is 10') do |width|
       arguments.width = width
     end
 
-    opts.on("-h", "--help", "Display using this help") do
+    opts.on('-h', '--help', 'Display using this help') do
       puts opts
       exit
     end
-
   end
 
   begin
     options.parse!
-  rescue OptionParser::InvalidArgument => e
+  rescue OptionParser::InvalidArgument
     puts "fd doesn't work, this way:"
     options.parse %w[--help]
     exit 1
