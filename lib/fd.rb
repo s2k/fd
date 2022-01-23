@@ -52,19 +52,23 @@ class Fd
 
     initialize_fields(content)
     while @char_index < @chars.size
-      char = @chars[@char_index]
-      bytes = char.bytes
-      if enough_space_in_line?(@byte_count_in_line, bytes)
-        append_to_line(bytes, char)
-      else
-        print_single_line
-        reset_line
-      end
+      process_current_character
     end
     print_single_line unless line.empty?
   end
 
   private
+
+  def process_current_character
+    char  = @chars[@char_index]
+    bytes = char.bytes
+    if enough_space_in_line?(@byte_count_in_line, bytes)
+      append_to_line(bytes, char)
+    else
+      print_single_line
+      reset_line
+    end
+  end
 
   def initialize_fields(content)
     @chars              = content.chars
