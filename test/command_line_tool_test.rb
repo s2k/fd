@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class FdTest < Minitest::Test
+class FdCommandLineTest < Minitest::Test
   EXPECTED_HELP_TEXT = <<~HELP_END
     Usage: fd [options] file_names
         -w, --width=WIDTH [Integer]      Display upto _width_ bytes per row, optional, default is 10
