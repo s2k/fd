@@ -44,7 +44,7 @@ class FdTest < Minitest::Test
     assert_equal File.read('test/test_data/expected-output-short-utf-8-text.txt'), res
   end
 
-  def test_display_longe_utf_8_text
+  def test_display_long_utf_8_text
     res = `bundle exec exe/fd test/test_data/long-utf-8-text.txt`
     assert_equal File.read('test/test_data/expected-output-long-utf-8-text.txt'), res
   end
