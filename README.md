@@ -6,23 +6,25 @@
 
 ## TL;DR
 
-`fd` reads the file _as a sequence of bytes_ and dumps the file content to _STDOUT_, thus the name `fd`. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
+`fd` reads files _as a sequence of (UTF-8) characters_ and dumps the content to _STDOUT_, thus the name `fd`. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
 
-## Warning
+## History
+ 
+I created this tool **back in 2004**. It was programmed in a different world: On another operating system, using another file system (which most notably didn't have the concept of case-sensitive file names). This version originally used ISO-8859-1 as the default (and only) encoding, while it now assumes UTF-8.
 
-This is, essentially, the same version I created **back in 2004**. It was programmed in a different world: On another operating system, using another file system (which most notably didn't have the concept of case-sensitive file names). This version originally used ISO-8859-1 as the default encoding, while it's now UTF-8. But since it reads the file byte wise, some characters will not be displayed as you would see them in a modern text editor.
+The early versions had it easy: Each character was assumed to use one byte in the file. This made displaying it in rows with a constant number of characters easy. Nowadays, however, a singe character may be composed of a (varying) number of bytes, making it impossible to always display the same number of characters in each row.
+This is just a small aspect of how character encoding is more complicated (and more complex).
 
-In other words: It's a work in progress.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+If you're using a `Gemfile`, add this line to make the tool available in your project:
 
 ```ruby
 gem 'fd'
 ```
 
-And then execute:
+Then execute:
 
     $ bundle install
 
@@ -30,24 +32,15 @@ Or install it yourself as:
 
     $ gem install fd
 
-
 ## Usage
 
 ```
-fd.rb [-w _number_] <em>file_name(s)</em>
-```
-
-Depending on your operating system, you may have to type a bit more...
-
-```
-ruby fd.rb [-w _number_] file_name(s)
+fd [-w _number_] file_name [file_name]
 ```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 ## Contributing
 
@@ -55,4 +48,4 @@ Bug reports and pull requests are welcome on GitHub at <https://github.com/s2k/f
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available under the terms of the [MIT License](https://opensource.org/licenses/MIT).
