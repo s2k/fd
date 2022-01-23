@@ -7,6 +7,7 @@ class FdTest < Minitest::Test
     Usage: fd [options] file_names
         -w, --width=WIDTH [Integer]      Display upto _width_ bytes per row, optional, default is 10
         -h, --help                       Display using this help
+        -v, --version                    Display version info and quit
   END
 
   def test_has_version_number
@@ -26,6 +27,11 @@ class FdTest < Minitest::Test
   def test_help_only_prints_help
     res = `bundle exec bin/fd -h no-such-file`
     assert_equal EXPECTED_HELP_TEXT, res
+  end
+
+  def test_print_version
+    res = `bundle exec bin/fd -v`
+    assert_match /\Afd version: (\d+\.)+\d+\Z/, res
   end
 
   def test_width_requires_one_parameter
