@@ -10,7 +10,7 @@ class FdTest < Minitest::Test
   END
 
   def test_has_version_number
-    assert_match %r{\A(\d+\.)+\d+\Z}, ::Fd::VERSION
+    assert_match(/\A(\d+\.)+\d+\Z/, ::Fd::VERSION)
   end
 
   def test_works_with_ascii_input
@@ -35,7 +35,7 @@ class FdTest < Minitest::Test
 
   def test_non_integer_width_parameter_causes_help_to_be_displayed
     res = `bundle exec exe/fd -w f10x test/test_data/word-list-ascii-ipsum.txt`
-    exp = "fd doesn't work, this way:\n" + EXPECTED_HELP_TEXT
+    exp = "fd doesn't work, this way:\n#{EXPECTED_HELP_TEXT}"
     assert_equal exp, res
   end
 
