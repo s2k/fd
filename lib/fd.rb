@@ -59,19 +59,18 @@ class Fd
       char = chars[@char_index]
       bytes = char.bytes
       if enough_space_in_line?(@byte_count_in_line, bytes)
-        # Next char fits in @line => Add hex values & character to @line
         append_to_line(bytes, char)
       else
-        # Print a new @line…
-        print_single_line(@hex_values, @line)
-        # …and reset @line internal values
+        print_single_line
         reset_line
       end
     end
-    print_single_line(@hex_values, @line) unless @line.empty?
+    print_single_line unless line.empty?
   end
 
   private
+
+  attr_reader :hex_values, :line
 
   def reset_line
     @byte_count_in_line = 0
@@ -90,7 +89,7 @@ class Fd
     byte_count_in_line + bytes.size <= line_length
   end
 
-  def print_single_line(hex_values, line)
+  def print_single_line
     puts("#{format("%#{(3 * line_length) - 1}s", hex_values.join(' '))} |#{format("%#{5 * line_length}s", line)}")
   end
 end
