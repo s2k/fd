@@ -5,36 +5,38 @@ require 'fd'
 require 'optparse'
 require 'ostruct'
 
-if __FILE__ == $PROGRAM_NAME
+arguments = OpenStruct.new
+arguments.width = 10
 
-  arguments = OpenStruct.new
-  arguments.width = 10
+options = OptionParser.new do |opts|
+  opts.banner = "Usage: #{File.basename __FILE__} [options] file_names"
 
-  options = OptionParser.new do |opts|
-    opts.banner = "Usage: #{File.basename __FILE__} [options] file_names"
-
-    opts.on('-w', '--width=WIDTH [Integer]', Integer, 'Display upto _width_ bytes per row, optional, default is 10') do |width|
-      arguments.width = width
-    end
-
-    opts.on('-h', '--help', 'Display using this help') do
-      puts opts
-      exit
-    end
+  opts.on('-w', '--width=WIDTH [Integer]', Integer, 'Display upto _width_ bytes per row, optional, default is 10') do |width|
+    arguments.width = width
   end
 
-  begin
-    options.parse!
-  rescue OptionParser::InvalidArgument
-    puts "fd doesn't work, this way:"
-    options.parse %w[--help]
-    exit 1
+  opts.on('-h', '--help', 'Display using this help') do
+    puts opts
+    exit
   end
 
-  file_dumper = Fd.new(arguments.width)
-
-  ARGV.each do |fn|
-    file_dumper.dump(fn)
+  opts.on('-v', '--version', 'Display version info and quit') do
+    puts "fd version: #{Fd.version}"
+    exit
   end
+end
 
+begin
+  ARGV.push('-h') if ARGV.empty?
+  options.parse!
+rescue OptionParser::InvalidArgument
+  puts "fd doesn't work, this way:"
+  options.parse %w[--help]
+  exit 1
+end
+
+file_dumper = Fd.new(arguments.width)
+
+ARGV.each do |fn|
+  file_dumper.dump(fn)
 end
