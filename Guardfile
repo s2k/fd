@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 guard :minitest do
   watch(%r{^test/(.*)\/?test_(.*)\.rb$})
