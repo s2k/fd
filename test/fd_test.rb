@@ -3,12 +3,12 @@
 require 'test_helper'
 
 class FdTest < Minitest::Test
-  EXPECTED_HELP_TEXT = <<~END
+  EXPECTED_HELP_TEXT = <<~HELP_END
     Usage: fd [options] file_names
         -w, --width=WIDTH [Integer]      Display upto _width_ bytes per row, optional, default is 10
         -h, --help                       Display using this help
         -v, --version                    Display version info and quit
-  END
+  HELP_END
 
   def test_has_version_number
     assert_match(/\A(\d+\.)+\d+\Z/, ::Fd::VERSION)
