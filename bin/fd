@@ -9,7 +9,7 @@ arguments = OpenStruct.new
 arguments.width = 10
 
 options = OptionParser.new do |opts|
-  opts.banner = "Usage: #{File.basename __FILE__} [options] file_names"
+  opts.banner = "Usage: #{File.basename __FILE__} [options] [file_names]"
 
   opts.on('-w', '--width=WIDTH [Integer]', Integer, 'Display upto _width_ bytes per row, optional, default is 10') do |width|
     arguments.width = width
@@ -17,6 +17,7 @@ options = OptionParser.new do |opts|
 
   opts.on('-h', '--help', 'Display using this help') do
     puts opts
+    puts '', 'When no file names a given fd reads from STDIN.'
     exit
   end
 
@@ -27,7 +28,7 @@ options = OptionParser.new do |opts|
 end
 
 begin
-  ARGV.push('-h') if ARGV.empty?
+  ARGV.push('-h') if ARGV.empty? && ARGF.eof?
   options.parse!
 rescue OptionParser::InvalidArgument
   puts "fd doesn't work, this way:"
@@ -37,6 +38,10 @@ end
 
 file_dumper = Fd.new(arguments.width)
 
-ARGV.each do |fn|
-  file_dumper.dump(fn)
+if ARGV.size.positive?
+  ARGV.each do |fn|
+    file_dumper.dump_file(fn)
+  end
+else
+  file_dumper.dump_stdin(STDIN.read)
 end
