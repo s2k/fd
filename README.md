@@ -37,12 +37,13 @@ Or install it yourself as:
 You can pass _file names_ on the command line:
 
 ```
-fd [-w _number_] [file_names]
+fd [-w number] [file_names]
 ```
 
 For example:
 ```bash
-> echo "Bacon ipsum dolor amet short ribs flank irure filet mignon brisket buffalo est porchetta." | fd -w 7
+> echo "Bacon ipsum dolor amet short ribs flank irure filet mignon brisket buffalo est porchetta." > some_file
+> fd -w 7 some_file
 STDIN
 42 61 63 6f 6e 20 69 |    B    a    c    o    n   __    i
 70 73 75 6d 20 64 6f |    p    s    u    m   __    d    o
