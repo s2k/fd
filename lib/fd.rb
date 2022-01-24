@@ -45,16 +45,22 @@ class Fd
   end
 
   # dumps the given file _file_name_ to stdout.
-  def dump(file_name)
-    puts file_name
-    content = File.read(file_name)
+  def dump(content)
     raise "Not the expected encoding of UFT-8, got #{content.encoding}" unless content.encoding == Encoding::UTF_8
 
     initialize_fields(content)
-    while @char_index < @chars.size
-      process_current_character
-    end
+    process_current_character while @char_index < @chars.size
     print_single_line unless line.empty?
+  end
+
+  def dump_file(file_name)
+    puts file_name
+    dump(File.read(file_name))
+  end
+
+  def dump_stdin(content)
+    puts 'STDIN'
+    dump(content)
   end
 
   private
