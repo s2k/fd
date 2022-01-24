@@ -44,7 +44,7 @@ For example:
 ```bash
 > echo "Bacon ipsum dolor amet short ribs flank irure filet mignon brisket buffalo est porchetta." > some_file
 > fd -w 7 some_file
-STDIN
+some_file
 42 61 63 6f 6e 20 69 |    B    a    c    o    n   __    i
 70 73 75 6d 20 64 6f |    p    s    u    m   __    d    o
 6c 6f 72 20 61 6d 65 |    l    o    r   __    a    m    e
