@@ -54,4 +54,15 @@ class FdCommandLineTest < Minitest::Test
     res = `bundle exec bin/fd test/test_data/long-utf-8-text.txt`
     assert_equal File.read('test/test_data/expected-output-long-utf-8-text.txt'), res
   end
+
+  def test_processes_stdin_when_no_file_is_given
+    res = `echo What ever the text may be | bundle exec bin/fd`
+    assert_equal File.read('test/test_data/expected-text-from-stdin.txt'), res
+  end
+
+  def test_processes_stdin_when_no_file_is_given_with_width
+    res = `echo What ever the text may be | bundle exec bin/fd -w 12`
+    assert_equal File.read('test/test_data/expected-text-from-stdin-with-width.txt'), res
+  end
+
 end
