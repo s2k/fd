@@ -56,7 +56,8 @@ STDIN
 6b 65 74 20 62 75 66 |    k    e    t   __    b    u    f
 66 61 6c 6f 20 65 73 |    f    a    l    o   __    e    s
 74 20 70 6f 72 63 68 |    t   __    p    o    r    c    h
-   65 74 74 61 2e 0a |         e    t    t    a    .   LF```
+   65 74 74 61 2e 0a |         e    t    t    a    .   LF
+```
 
 You can also pipe input to STDIN:
 
