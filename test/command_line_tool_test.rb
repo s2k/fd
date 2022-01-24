@@ -4,10 +4,12 @@ require 'test_helper'
 
 class FdCommandLineTest < Minitest::Test
   EXPECTED_HELP_TEXT = <<~HELP_END
-    Usage: fd [options] file_names
+    Usage: fd [options] [file_names]
         -w, --width=WIDTH [Integer]      Display upto _width_ bytes per row, optional, default is 10
         -h, --help                       Display using this help
         -v, --version                    Display version info and quit
+
+    When no file names a given fd reads from STDIN.
   HELP_END
 
   def test_has_version_number
