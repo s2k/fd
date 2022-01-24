@@ -63,7 +63,7 @@ some_file
 You can also pipe input to STDIN:
 
 ```bash
-> echo "Put something into STDIN" | be bin/fd -w 5
+> echo "Put something into STDIN" | fd -w 5
 STDIN
 50 75 74 20 73 |    P    u    t   __    s
 6f 6d 65 74 68 |    o    m    e    t    h
