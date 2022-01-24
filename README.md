@@ -43,6 +43,7 @@ fd [-w number] [file_names]
 ```
 
 For example:
+
 ```bash
 > echo "Bacon ipsum dolor amet short ribs flank irure filet mignon brisket buffalo est porchetta." > some_file
 > fd -w 7 some_file
