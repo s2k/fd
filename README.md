@@ -6,7 +6,7 @@
 
 ## TL;DR
 
-`fd` reads files _as a sequence of (UTF-8) characters_ and dumps the content to _STDOUT_, thus the name `fd`. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
+`fd` reads files (or STDIN) _as a sequence of (UTF-8) characters_ and dumps the content to _STDOUT_, thus the name `fd`. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
 
 ## History
  
