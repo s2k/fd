@@ -32,6 +32,8 @@ Or install it yourself as:
 
     $ gem install fd
 
+Also see the [fd page on rubygems.org](https://rubygems.org/gems/fd)
+
 ## Usage
 
 You can pass _file names_ on the command line:
