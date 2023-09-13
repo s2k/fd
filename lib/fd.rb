@@ -31,17 +31,17 @@ class Fd
 
     @line_length = line_length
     @char_table = {}
-    @char_table[0]  = 'NULL'
-    @char_table[7]  = 'BEL'
-    @char_table[8]  = 'BS'
-    @char_table[9]  = 'TAB'
-    @char_table[10] = 'LF'
-    @char_table[11] = 'VT'
-    @char_table[12] = 'FF'
-    @char_table[13] = 'CR'
-    @char_table[16] = 'DEL'
-    @char_table[27] = 'ESC'
-    @char_table[32] = '__'
+    @char_table[0]  = '␀'
+    @char_table[7]  = '␇'
+    @char_table[8]  = '␈'
+    @char_table[9]  = '␉'
+    @char_table[10] = '␊'
+    @char_table[11] = '␋'
+    @char_table[12] = '␌'
+    @char_table[13] = '␍'
+    @char_table[16] = '␡'
+    @char_table[27] = '␛'
+    @char_table[32] = '␠'
   end
 
   # dumps the given file _file_name_ to stdout.
@@ -95,7 +95,7 @@ class Fd
   def append_to_line(bytes, char)
     @byte_count_in_line += bytes.size
     bytes.each { |bt| @hex_values << format('%02x', bt) }
-    @line       += format('%5s', (char_table[char.ord] || char))
+    @line       += format('%2s', (char_table[char.ord] || char))
     @char_index += 1
   end
 
@@ -104,6 +104,6 @@ class Fd
   end
 
   def print_single_line
-    puts("#{format("%#{(3 * line_length) - 1}s", hex_values.join(' '))} |#{format("%#{5 * line_length}s", line)}")
+    puts("#{format("%#{(3 * line_length) - 1}s", hex_values.join(' '))} |#{format("%#{2 * line_length}s", line)}")
   end
 end
