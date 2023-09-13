@@ -46,33 +46,33 @@ For example:
 
 ```bash
 > echo "Bacon ipsum dolor amet short ribs flank irure filet mignon brisket buffalo est porchetta." > some_file
-> fd -w 7 some_file
+>  ~/dev/fd ᚠ main > fd -w 7 some_file
 some_file
-42 61 63 6f 6e 20 69 |    B    a    c    o    n   __    i
-70 73 75 6d 20 64 6f |    p    s    u    m   __    d    o
-6c 6f 72 20 61 6d 65 |    l    o    r   __    a    m    e
-74 20 73 68 6f 72 74 |    t   __    s    h    o    r    t
-20 72 69 62 73 20 66 |   __    r    i    b    s   __    f
-6c 61 6e 6b 20 69 72 |    l    a    n    k   __    i    r
-75 72 65 20 66 69 6c |    u    r    e   __    f    i    l
-65 74 20 6d 69 67 6e |    e    t   __    m    i    g    n
-6f 6e 20 62 72 69 73 |    o    n   __    b    r    i    s
-6b 65 74 20 62 75 66 |    k    e    t   __    b    u    f
-66 61 6c 6f 20 65 73 |    f    a    l    o   __    e    s
-74 20 70 6f 72 63 68 |    t   __    p    o    r    c    h
-   65 74 74 61 2e 0a |         e    t    t    a    .   LF
+42 61 63 6f 6e 20 69 | B a c o n ␠ i
+70 73 75 6d 20 64 6f | p s u m ␠ d o
+6c 6f 72 20 61 6d 65 | l o r ␠ a m e
+74 20 73 68 6f 72 74 | t ␠ s h o r t
+20 72 69 62 73 20 66 | ␠ r i b s ␠ f
+6c 61 6e 6b 20 69 72 | l a n k ␠ i r
+75 72 65 20 66 69 6c | u r e ␠ f i l
+65 74 20 6d 69 67 6e | e t ␠ m i g n
+6f 6e 20 62 72 69 73 | o n ␠ b r i s
+6b 65 74 20 62 75 66 | k e t ␠ b u f
+66 61 6c 6f 20 65 73 | f a l o ␠ e s
+74 20 70 6f 72 63 68 | t ␠ p o r c h
+   65 74 74 61 2e 0a |   e t t a . ␊
 ```
 
 You can also pipe input to STDIN:
 
 ```bash
-> echo "Put something into STDIN" | fd -w 5
+> > echo "Put something into STDIN" | fd -w 5
 STDIN
-50 75 74 20 73 |    P    u    t   __    s
-6f 6d 65 74 68 |    o    m    e    t    h
-69 6e 67 20 69 |    i    n    g   __    i
-6e 74 6f 20 53 |    n    t    o   __    S
-54 44 49 4e 0a |    T    D    I    N   LF
+50 75 74 20 73 | P u t ␠ s
+6f 6d 65 74 68 | o m e t h
+69 6e 67 20 69 | i n g ␠ i
+6e 74 6f 20 53 | n t o ␠ S
+54 44 49 4e 0a | T D I N ␊
 ```
 
 ## Development
