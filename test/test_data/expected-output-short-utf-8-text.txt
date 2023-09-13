@@ -1,2 +1,2 @@
 test/test_data/short-utf-8-text.txt
-   f0 9f 86 82 f0 9d 95 82 0a |                                       🆂    𝕂   LF
+   f0 9f 86 82 f0 9d 95 82 0a |               🆂 𝕂 ␊
