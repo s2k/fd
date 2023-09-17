@@ -42,7 +42,7 @@ You can pass _file names_ on the command line:
 fd [-w number] [file_names]
 ```
 
-For example:
+For example (without colour highlighting of invisible characters):
 
 ```bash
 > echo "Bacon ipsum dolor amet short ribs flank irure filet mignon brisket buffalo est porchetta." > some_file
@@ -63,10 +63,14 @@ some_file
    65 74 74 61 2e 0a |   e t t a . ␊
 ```
 
-You can also pipe input to STDIN:
+Here's a screenshot of a zsh session that shows the highlighting:
+
+![](images/usage_example.png)
+
+You can also pipe input from STDIN:
 
 ```bash
-> > echo "Put something into STDIN" | fd -w 5
+> echo "Put something into STDIN" | fd -w 5
 STDIN
 50 75 74 20 73 | P u t ␠ s
 6f 6d 65 74 68 | o m e t h
