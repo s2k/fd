@@ -7,6 +7,8 @@ require_relative 'fd/version'
 class Fd
   class Error < StandardError; end
 
+  ESCAPE_CHARACTERS = %w[␀ ␇ ␈ ␉ ␊ ␋ ␌ ␍ ␡ ␛ ␠]
+
   attr_reader :line_length, :char_table
 
   # _line_length_ sets how many characters are displayed per @line.
@@ -42,6 +44,10 @@ class Fd
     @char_table[16] = '␡'
     @char_table[27] = '␛'
     @char_table[32] = '␠'
+  end
+
+  def add_esc_sequence(chr)
+    "\e[31m#{chr}\e[0m"
   end
 
   # dumps the given file _file_name_ to stdout.
@@ -104,6 +110,8 @@ class Fd
   end
 
   def print_single_line
-    puts("#{format("%#{(3 * line_length) - 1}s", hex_values.join(' '))} |#{format("%#{2 * line_length}s", line)}")
+    puts("#{format("%#{(3 * line_length) - 1}s", hex_values.join(' '))} |#{format("%#{2 * line_length}s", line)}".
+      gsub(/([#{ESCAPE_CHARACTERS.join('')}])/, add_esc_sequence('\1'))
+    )
   end
 end
