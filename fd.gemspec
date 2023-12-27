@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Stephan Kämper']
   spec.email         = ['the.tester@seasidetesting.com']
 
-  spec.summary       = 'fd is a simple (currently simplistic) tool to dump file contents in binary & text format - side by side'
+  spec.summary       = 'fd is a simple tool to dump file contents in binary & text format side by side'
   spec.description   = 'fd prints the given file in two columns: Hex values in the left column and the textual representations in the right column.'
   spec.homepage      = 'https://github.com/s2k/fd'
   spec.license       = 'MIT'

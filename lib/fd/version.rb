@@ -4,7 +4,7 @@
 # All other code is in lib/fd.rb
 #
 class Fd
-  VERSION = '0.6.0'
+  VERSION = '1.0.0'
 
   def self.version
     VERSION
