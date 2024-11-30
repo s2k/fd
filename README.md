@@ -9,7 +9,7 @@
 `fd` reads files (or STDIN) _as a sequence of (UTF-8) characters_ and dumps the content to _STDOUT_, thus the name `fd`. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
 
 ## History
- 
+
 I created this tool **back in 2004**. It was programmed in a different world: On another operating system, using another file system (which most notably didn't have the concept of case-sensitive file names). This version originally used ISO-8859-1 as the default (and only) encoding, while it now assumes UTF-8.
 
 The early versions had it easy: Each character was assumed to use one byte in the file. This made displaying it in rows with a constant number of characters easy. Nowadays, however, a singe character may be composed of a (varying) number of bytes, making it impossible to always display the same number of characters in each row.
@@ -26,11 +26,15 @@ gem 'fd'
 
 Then execute:
 
-    $ bundle install
+```bash
+    bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install fd
+```bash
+gem install fd
+```
 
 Also see the [fd page on rubygems.org](https://rubygems.org/gems/fd)
 
@@ -38,7 +42,7 @@ Also see the [fd page on rubygems.org](https://rubygems.org/gems/fd)
 
 You can pass _file names_ on the command line:
 
-```
+```bash
 fd [-w number] [file_names]
 ```
 
