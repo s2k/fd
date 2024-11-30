@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'test_helper'
+
 class FdTest < Minitest::Test
   def test_version_method
     assert_match(/\A(\d+\.)+\d+\Z/, Fd.version)
