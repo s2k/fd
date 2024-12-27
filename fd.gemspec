@@ -20,20 +20,6 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = 'https://github.com/s2k/fd'
   # spec.metadata['changelog_uri'] = "TODO: Put your gem's CHANGELOG.md URL here."
 
-  spec.add_development_dependency 'guard-bundler'
-  spec.add_development_dependency 'guard-minitest'
-  spec.add_development_dependency 'minitest'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'pry-doc'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rb-fsevent'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'terminal-notifier'
-  spec.add_development_dependency 'terminal-notifier-guard'
-  spec.add_development_dependency 'mutex_m'
-  spec.add_development_dependency 'ostruct'
-  spec.add_development_dependency 'logger'
-
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
