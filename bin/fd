@@ -11,7 +11,9 @@ arguments.width = 10
 options = OptionParser.new do |opts|
   opts.banner = "Usage: #{File.basename __FILE__} [options] [file_names]"
 
-  opts.on('-w', '--width=WIDTH [Integer]', Integer, 'Display upto _width_ bytes per row, optional, default is 10') do |width|
+  opts.on('-w',
+          '--width=WIDTH [Integer]',
+          Integer, 'Display upto _width_ bytes per row, optional, default is 10') do |width|
     arguments.width = width
   end
 
@@ -43,5 +45,5 @@ if ARGV.size.positive?
     file_dumper.dump_file(fn)
   end
 else
-  file_dumper.dump_stdin(STDIN.read)
+  file_dumper.dump_stdin($stdin.read)
 end
