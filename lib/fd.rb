@@ -7,9 +7,23 @@ require_relative 'fd/version'
 class Fd
   class Error < StandardError; end
 
-  ESCAPE_CHARACTERS = %w[␀ ␇ ␈ ␉ ␊ ␋ ␌ ␍ ␡ ␛ ␠]
+  ESCAPE_CHARACTERS = %w[␀ ␇ ␈ ␉ ␊ ␋ ␌ ␍ ␡ ␛ ␠].freeze
 
-  attr_reader :line_length, :char_table
+  CHAR_TABLE = {
+    0 => '␀',
+    7 => '␇',
+    8 => '␈',
+    9 => '␉',
+    10 => '␊',
+    11 => '␋',
+    12 => '␌',
+    13 => '␍',
+    16 => '␡',
+    27 => '␛',
+    32 => '␠'
+  }.freeze
+
+  attr_reader :line_length
 
   # _line_length_ sets how many characters are displayed per @line.
   # Some <i>special non-printable/invisible characters</i> are displayed as their names.
@@ -28,22 +42,12 @@ class Fd
   # __   :: 32
   #
   def initialize(line_length)
-    raise ArgumentError,
-          "Line width must be a positive integer, was given '#{line_length}'" unless line_length.is_a?(Integer) && line_length.positive?
+    unless line_length.is_a?(Integer) && line_length.positive?
+      raise ArgumentError,
+            "Line width must be a positive integer, was given '#{line_length}'"
+    end
 
     @line_length = line_length
-    @char_table = {}
-    @char_table[0]  = '␀'
-    @char_table[7]  = '␇'
-    @char_table[8]  = '␈'
-    @char_table[9]  = '␉'
-    @char_table[10] = '␊'
-    @char_table[11] = '␋'
-    @char_table[12] = '␌'
-    @char_table[13] = '␍'
-    @char_table[16] = '␡'
-    @char_table[27] = '␛'
-    @char_table[32] = '␠'
   end
 
   def add_esc_sequence(chr)
@@ -101,7 +105,7 @@ class Fd
   def append_to_line(bytes, char)
     @byte_count_in_line += bytes.size
     bytes.each { |bt| @hex_values << format('%02x', bt) }
-    @line       += format('%2s', (char_table[char.ord] || char))
+    @line       += format('%2s', (CHAR_TABLE[char.ord] || char))
     @char_index += 1
   end
 
@@ -110,8 +114,7 @@ class Fd
   end
 
   def print_single_line
-    puts("#{format("%#{(3 * line_length) - 1}s", hex_values.join(' '))} |#{format("%#{2 * line_length}s", line)}".
-      gsub(/([#{ESCAPE_CHARACTERS.join('')}])/, add_esc_sequence('\1'))
-    )
+    puts("#{format("%#{(3 * line_length) - 1}s", hex_values.join(' '))} |#{format("%#{2 * line_length}s", line)}"
+           .gsub(/([#{ESCAPE_CHARACTERS.join}])/, add_esc_sequence('\1')))
   end
 end
