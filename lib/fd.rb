@@ -105,7 +105,7 @@ class Fd
   def append_to_line(bytes, char)
     @byte_count_in_line += bytes.size
     bytes.each { |bt| @hex_values << format('%02x', bt) }
-    @line       += format('%2s', (CHAR_TABLE[char.ord] || char))
+    @line       += format('%2s', CHAR_TABLE[char.ord] || char)
     @char_index += 1
   end
 
