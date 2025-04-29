@@ -13,7 +13,7 @@
 I created this tool **back in 2004**. It was programmed in a different world: On another operating system, using another file system (which most notably didn't have the concept of case-sensitive file names). This version originally used ISO-8859-1 as the default (and only) encoding, while it now assumes UTF-8.
 
 The early versions had it easy: Each character was assumed to use one byte in the file. This made displaying it in rows with a constant number of characters easy. Nowadays, however, a singe character may be composed of a (varying) number of bytes, making it impossible to always display the same number of characters in each row.
-This is just a small aspect of how character encoding is more complicated (and more complex).
+This is just a small aspect of how character encoding made things more complicated (and more complex).
 
 
 ## Installation
@@ -27,7 +27,7 @@ gem 'fd'
 Then execute:
 
 ```bash
-    bundle install
+bundle install
 ```
 
 Or install it yourself as:
