@@ -117,7 +117,6 @@ class Fd
     hex_val_format      = "%#{(3 * line_length) - 1}s"
     line_content_format = "%#{2 * line_length}s"
     raw_content         = "#{format(hex_val_format, hex_values.join(' '))} |#{format(line_content_format, line)}"
-    puts(raw_content.gsub(/([#{ESCAPE_CHARACTERS.join}])/, add_esc_sequence('\1'))
-    )
+    puts(raw_content.gsub(/([#{ESCAPE_CHARACTERS.join}])/, add_esc_sequence('\1')))
   end
 end
