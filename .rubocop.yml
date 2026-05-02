@@ -13,7 +13,9 @@ plugins:
   - rubocop-minitest
   - rubocop-rake
 
+
 AllCops:
+  TargetRubyVersion: 3.4.0
   NewCops: enable
 
 Style/OpenStructUse:
