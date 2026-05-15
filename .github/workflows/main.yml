@@ -9,7 +9,7 @@ jobs:
       matrix:
         ruby-version: ['3.3.11', '3.4.9', '4.0.4', 'truffleruby', 'truffleruby+graalvm']
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v6
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
