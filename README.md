@@ -9,7 +9,6 @@
 * 3.3.11
 * 3.4.9
 * 4.0.4
-* jruby
 * truffleruby
 * truffleruby+graalvm
 
