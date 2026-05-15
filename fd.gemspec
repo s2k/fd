@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'fd prints the given file in 2 columns (left: hex values left / right: / textual representations'
   spec.homepage      = 'https://github.com/s2k/fd'
   spec.license       = 'MIT'
-  spec.required_ruby_version = '>= 3.4'
+  spec.required_ruby_version = '>= 3.3'
 
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
