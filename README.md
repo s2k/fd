@@ -4,6 +4,17 @@
 
 [![Main workflow: unit tests](https://github.com/s2k/fd/actions/workflows/main.yml/badge.svg)](https://github.com/s2k/fd/actions) <sup style="font-size:125%;">᛫</sup> [![CodeQL for 'fd'](https://github.com/s2k/fd/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/s2k/fd/actions/workflows/codeql-analysis.yml) <sup style="font-size:125%;">᛫</sup> [![Gem Version](https://badge.fury.io/rb/fd.svg)](https://badge.fury.io/rb/fd) <sup style="font-size:125%;">᛫</sup> [![Maintainability](https://api.codeclimate.com/v1/badges/a85527d101c9ed8f581b/maintainability)](https://codeclimate.com/github/s2k/fd/maintainability)
 
+## Ruby versions used for testing
+
+* 3.3.11
+* 3.4.9
+* 4.0.4
+* jruby
+* truffleruby
+* truffleruby+graalvm
+
+See [Ruby Setup GitHub Action](https://github.com/ruby/setup-ruby#setup-ruby) for details.
+
 ## TL;DR
 
 `fd` reads files (or STDIN) _as a sequence of (UTF-8) characters_ and dumps the content to _STDOUT_, thus the name `fd`. It does so in two columns, the left one will display the hex values of the bytes in the file, the right one will display the characters.
