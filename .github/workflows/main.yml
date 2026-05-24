@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        ruby-version: ['3.3.11', '3.4.9', '4.0.4', 'truffleruby', 'truffleruby+graalvm']
+        ruby-version: ['3.3.11', '3.4.9', '4.0.5', 'truffleruby', 'truffleruby+graalvm']
     steps:
     - uses: actions/checkout@v6
     - name: Set up Ruby
