@@ -10,7 +10,7 @@
 
 * 3.3.11
 * 3.4.9
-* 4.0.5
+* 4.0.6
 * truffleruby
 * truffleruby+graalvm
 
